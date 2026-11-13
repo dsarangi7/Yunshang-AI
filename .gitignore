@@ -1,0 +1,17 @@
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.log
+.vscode/
+.idea/
+*.swp
+*~
+__pycache__/
+*.py[cod]
+.env
+.env.*
+!.env.example
+.vercel
+node_modules/
+dist/
+.python-version

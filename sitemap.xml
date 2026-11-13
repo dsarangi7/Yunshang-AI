@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://YOUR-DOMAIN.com/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://YOUR-DOMAIN.com/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://YOUR-DOMAIN.com/?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://YOUR-DOMAIN.com/?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://YOUR-DOMAIN.com/?lang=hi"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://YOUR-DOMAIN.com/"/>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://YOUR-DOMAIN.com/#flagship</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://YOUR-DOMAIN.com/?lang=en#flagship"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://YOUR-DOMAIN.com/?lang=zh#flagship"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://YOUR-DOMAIN.com/?lang=es#flagship"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://YOUR-DOMAIN.com/?lang=hi#flagship"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://YOUR-DOMAIN.com/#flagship"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://YOUR-DOMAIN.com/#why</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://YOUR-DOMAIN.com/?lang=en#why"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://YOUR-DOMAIN.com/?lang=zh#why"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://YOUR-DOMAIN.com/?lang=es#why"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://YOUR-DOMAIN.com/?lang=hi#why"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://YOUR-DOMAIN.com/#why"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://YOUR-DOMAIN.com/#about</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://YOUR-DOMAIN.com/?lang=en#about"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://YOUR-DOMAIN.com/?lang=zh#about"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://YOUR-DOMAIN.com/?lang=es#about"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://YOUR-DOMAIN.com/?lang=hi#about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://YOUR-DOMAIN.com/#about"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://YOUR-DOMAIN.com/#collection</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://YOUR-DOMAIN.com/?lang=en#collection"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://YOUR-DOMAIN.com/?lang=zh#collection"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://YOUR-DOMAIN.com/?lang=es#collection"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://YOUR-DOMAIN.com/?lang=hi#collection"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://YOUR-DOMAIN.com/#collection"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://YOUR-DOMAIN.com/#compare</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://YOUR-DOMAIN.com/?lang=en#compare"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://YOUR-DOMAIN.com/?lang=zh#compare"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://YOUR-DOMAIN.com/?lang=es#compare"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://YOUR-DOMAIN.com/?lang=hi#compare"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://YOUR-DOMAIN.com/#compare"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://YOUR-DOMAIN.com/#faq</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://YOUR-DOMAIN.com/?lang=en#faq"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://YOUR-DOMAIN.com/?lang=zh#faq"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://YOUR-DOMAIN.com/?lang=es#faq"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://YOUR-DOMAIN.com/?lang=hi#faq"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://YOUR-DOMAIN.com/#faq"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://YOUR-DOMAIN.com/#quote</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://YOUR-DOMAIN.com/?lang=en#quote"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://YOUR-DOMAIN.com/?lang=zh#quote"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://YOUR-DOMAIN.com/?lang=es#quote"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://YOUR-DOMAIN.com/?lang=hi#quote"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://YOUR-DOMAIN.com/#quote"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://YOUR-DOMAIN.com/#product-g2pro</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://YOUR-DOMAIN.com/?lang=en#product-g2pro"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://YOUR-DOMAIN.com/?lang=zh#product-g2pro"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://YOUR-DOMAIN.com/?lang=es#product-g2pro"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://YOUR-DOMAIN.com/?lang=hi#product-g2pro"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://YOUR-DOMAIN.com/#product-g2pro"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://YOUR-DOMAIN.com/#product-w611pro</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://YOUR-DOMAIN.com/?lang=en#product-w611pro"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://YOUR-DOMAIN.com/?lang=zh#product-w611pro"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://YOUR-DOMAIN.com/?lang=es#product-w611pro"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://YOUR-DOMAIN.com/?lang=hi#product-w611pro"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://YOUR-DOMAIN.com/#product-w611pro"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://YOUR-DOMAIN.com/#product-w640</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://YOUR-DOMAIN.com/?lang=en#product-w640"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://YOUR-DOMAIN.com/?lang=zh#product-w640"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://YOUR-DOMAIN.com/?lang=es#product-w640"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://YOUR-DOMAIN.com/?lang=hi#product-w640"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://YOUR-DOMAIN.com/#product-w640"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://YOUR-DOMAIN.com/#product-w630</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://YOUR-DOMAIN.com/?lang=en#product-w630"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://YOUR-DOMAIN.com/?lang=zh#product-w630"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://YOUR-DOMAIN.com/?lang=es#product-w630"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://YOUR-DOMAIN.com/?lang=hi#product-w630"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://YOUR-DOMAIN.com/#product-w630"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://YOUR-DOMAIN.com/#product-w610</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://YOUR-DOMAIN.com/?lang=en#product-w610"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://YOUR-DOMAIN.com/?lang=zh#product-w610"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://YOUR-DOMAIN.com/?lang=es#product-w610"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://YOUR-DOMAIN.com/?lang=hi#product-w610"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://YOUR-DOMAIN.com/#product-w610"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://YOUR-DOMAIN.com/#product-m10a</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://YOUR-DOMAIN.com/?lang=en#product-m10a"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://YOUR-DOMAIN.com/?lang=zh#product-m10a"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://YOUR-DOMAIN.com/?lang=es#product-m10a"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://YOUR-DOMAIN.com/?lang=hi#product-m10a"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://YOUR-DOMAIN.com/#product-m10a"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://YOUR-DOMAIN.com/#product-m08t</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://YOUR-DOMAIN.com/?lang=en#product-m08t"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://YOUR-DOMAIN.com/?lang=zh#product-m08t"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://YOUR-DOMAIN.com/?lang=es#product-m08t"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://YOUR-DOMAIN.com/?lang=hi#product-m08t"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://YOUR-DOMAIN.com/#product-m08t"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://YOUR-DOMAIN.com/#product-cacy01</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://YOUR-DOMAIN.com/?lang=en#product-cacy01"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://YOUR-DOMAIN.com/?lang=zh#product-cacy01"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://YOUR-DOMAIN.com/?lang=es#product-cacy01"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://YOUR-DOMAIN.com/?lang=hi#product-cacy01"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://YOUR-DOMAIN.com/#product-cacy01"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://YOUR-DOMAIN.com/#product-e12</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://YOUR-DOMAIN.com/?lang=en#product-e12"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://YOUR-DOMAIN.com/?lang=zh#product-e12"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://YOUR-DOMAIN.com/?lang=es#product-e12"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://YOUR-DOMAIN.com/?lang=hi#product-e12"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://YOUR-DOMAIN.com/#product-e12"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://YOUR-DOMAIN.com/?lang=zh</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://YOUR-DOMAIN.com/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://YOUR-DOMAIN.com/?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://YOUR-DOMAIN.com/?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://YOUR-DOMAIN.com/?lang=hi"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://YOUR-DOMAIN.com/?lang=es</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://YOUR-DOMAIN.com/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://YOUR-DOMAIN.com/?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://YOUR-DOMAIN.com/?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://YOUR-DOMAIN.com/?lang=hi"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://YOUR-DOMAIN.com/?lang=hi</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://YOUR-DOMAIN.com/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://YOUR-DOMAIN.com/?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://YOUR-DOMAIN.com/?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://YOUR-DOMAIN.com/?lang=hi"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+</urlset>
