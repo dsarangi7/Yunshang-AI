@@ -11,7 +11,7 @@
   var LANGS = ['en', 'zh', 'es', 'hi'];
   var HTML_LANG = { en: 'en', zh: 'zh-Hans', es: 'es', hi: 'hi' };
   var OG_LOCALE = { en: 'en_US', zh: 'zh_CN', es: 'es_ES', hi: 'hi_IN' };
-  var CONTACT_EMAIL = '${CONTACT_EMAIL}';      // replace before going live
+  var CONTACT_EMAIL = 'Szyskj22@163.com';
   var WHATSAPP_NUMBER = '${WHATSAPP_NUMBER}';  // international format, digits only, e.g. 8613800000000
   var MODELS = ['g2pro', 'w611pro', 'w640', 'w630', 'w610', 'm10a', 'm08t', 'cacy01', 'e12'];
   var IMG = { g2pro: 'g2pro-hero.png' };
@@ -696,6 +696,7 @@
   }
 
   function frame(now) {
+    if (!tex) { running = false; lastT = 0; return; }
     var dt = lastT ? Math.min(64, now - lastT) / 16.667 : 1;
     lastT = now;
     var k = 1 - Math.pow(1 - 0.12, dt);              // frame-rate independent lerp
@@ -717,30 +718,40 @@
 
   function kick() { if (!running) { running = true; requestAnimationFrame(frame); } }
 
-  window.addEventListener('scroll', function () { measure(); kick(); }, { passive: true });
-  window.addEventListener('resize', function () { resize(); measure(); kick(); });
+  var portalReady = false;
+  function onScroll() { if (!portalReady) return; measure(); kick(); }
+  function onResize() { if (!portalReady) return; resize(); measure(); kick(); }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onResize);
   if (finePointer) {
     window.addEventListener('pointermove', function (e) {
       ptrX = e.clientX / window.innerWidth * 2 - 1;
       ptrY = e.clientY / window.innerHeight * 2 - 1;
-      if (portalVisible) kick();
+      if (portalVisible && portalReady) kick();
     }, { passive: true });
   }
-  var onReduce = function (e) { reduce = e.matches; dirty = true; kick(); };
+  var onReduce = function (e) { reduce = e.matches; dirty = true; if (portalReady) kick(); };
   if (mqReduce.addEventListener) mqReduce.addEventListener('change', onReduce); else if (mqReduce.addListener) mqReduce.addListener(onReduce);
 
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(function (entries) {
       portalVisible = entries[0].isIntersecting;
-      if (portalVisible) kick();
+      if (portalVisible && portalReady) kick();
     }).observe(portal);
   }
 
-  buildParticles();
-  resize();
-  measure();
-  prog = target;
-  kick();
+  function startPortal() {
+    if (portalReady) return;
+    portalReady = true;
+    buildParticles();
+    resize();
+    measure();
+    prog = target;
+    kick();
+  }
+  // Paint language, navigation and in-view sections before the iris texture
+  // blocks the main thread. That work is heavy on a phone.
+  setTimeout(startPortal, 0);
 
   /* =========================================================
      4. Product modal + deep links (#product-xxx)
@@ -914,7 +925,11 @@
      6. Nav, smooth anchors, reveals, per-section meta
      ========================================================= */
   var burger = $('#nav-burger'), links = $('#nav-links');
-  function setMenu(open) { links.classList.toggle('open', open); burger.setAttribute('aria-expanded', String(open)); }
+  function setMenu(open) {
+    links.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', String(open));
+    document.body.classList.toggle('menu-open', open);
+  }
   burger.addEventListener('click', function () { setMenu(!links.classList.contains('open')); });
   links.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
@@ -923,13 +938,19 @@
     var top = portal.getBoundingClientRect().top + window.pageYOffset;
     return top + (portal.offsetHeight - window.innerHeight) * 0.92;
   }
+  function navOffset() {
+    var nav = $('#site-nav');
+    if (nav && nav.offsetHeight) return nav.offsetHeight + 12;
+    var parsed = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'), 10);
+    return (parsed || 68) + 12;
+  }
   function goTo(hash, done) {
     var y;
     if (hash === '#flagship') y = stageTop();
     else {
       var el = $(hash);
       if (!el) return;
-      y = el.getBoundingClientRect().top + window.pageYOffset - (parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'), 10) || 68) - 12;
+      y = el.getBoundingClientRect().top + window.pageYOffset - navOffset();
     }
     window.scrollTo({ top: Math.max(0, y), behavior: reduce ? 'auto' : 'smooth' });
     if (done) setTimeout(done, reduce ? 0 : 650);

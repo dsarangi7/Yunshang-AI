@@ -164,10 +164,10 @@ def jsonld():
     org = {
         '@type': 'Organization', '@id': f'{SITE}/#org', 'name': 'YUNSHANG AI', 'alternateName': 'Yunshang AI',
         'url': f'{SITE}/', 'logo': f'{SITE}/assets/logo.svg', 'description': EN['about']['statement'],
-        'email': '${CONTACT_EMAIL}',
+        'email': 'Szyskj22@163.com',
         'address': {'@type': 'PostalAddress', 'addressLocality': 'Shenzhen', 'addressRegion': 'Guangdong', 'addressCountry': 'CN'},
         'areaServed': 'Worldwide',
-        'contactPoint': [{'@type': 'ContactPoint', 'contactType': 'sales', 'email': '${CONTACT_EMAIL}',
+        'contactPoint': [{'@type': 'ContactPoint', 'contactType': 'sales', 'email': 'Szyskj22@163.com',
                           'telephone': '${WHATSAPP_NUMBER}', 'areaServed': 'Worldwide',
                           'availableLanguage': ['English', 'Chinese', 'Spanish', 'Hindi']}],
         'knowsAbout': ['AI smart glasses', 'Bluetooth audio glasses', 'OEM manufacturing', 'ODM manufacturing'],
