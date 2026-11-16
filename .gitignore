@@ -15,3 +15,5 @@ __pycache__/
 node_modules/
 dist/
 .python-version
+_backup_before_lens/
+_backup_before_lens

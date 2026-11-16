@@ -70,6 +70,19 @@ window.YS_I18N = {
     "real": {"title": "Real product, real packaging", "lead": "Unretouched photos of AIMB-G2 Pro units as they ship: retail box, interchangeable lenses, pouch and charging cable.", "alt": ["AIMB-G2 Pro AI glasses in front of their retail boxes", "AIMB-G2 Pro box contents: glasses, spare lenses, pouch and charging cable", "Three AIMB-G2 Pro glasses with different lens tints in front of retail boxes"]},
     "cta": "Request G2 Pro bulk pricing"
   },
+  "optics": {
+    "kicker": "Inside the camera",
+    "title": "An 8MP Sony lens, built into the frame",
+    "lead": "The AIMB-G2 Pro captures photos and 1080p@30fps video from eye level, hands free.",
+    "big": "8MP",
+    "stats": [
+      { "v": "8MP", "l": "Sony lens" },
+      { "v": "1080p", "l": "Video at 30fps" },
+      { "v": "AI", "l": "Image recognition" }
+    ],
+    "note": "Illustrative exploded view of the camera module.",
+    "alt": "Illustrative exploded view of the AIMB-G2 Pro camera lens rising out of the frame"
+  },
   "why": {
     "kicker": "Why partner with us",
     "title": "Built to supply importers, retailers and distributors",
@@ -321,6 +334,19 @@ window.YS_I18N = {
     "lens": { "title": "光致变色效果演示", "indoor": "室内", "outdoor": "户外", "caption": "同一副眼镜，室内透明，阳光下自动变色。" },
     "real": {"title": "真实产品，真实包装", "lead": "AIMB-G2 Pro出货实拍，未经修图：零售包装盒、可更换镜片、收纳袋与充电线。", "alt": ["零售包装盒前的AIMB-G2 Pro AI眼镜", "AIMB-G2 Pro包装内容：眼镜、备用镜片、收纳袋与充电线", "零售包装盒前三副不同镜片颜色的AIMB-G2 Pro眼镜"]},
     "cta": "获取G2 Pro批量报价"
+  },
+  "optics": {
+    "kicker": "镜头内部",
+    "title": "800万像素索尼镜头，融入镜框",
+    "lead": "AIMB-G2 Pro 以第一视角拍摄照片与1080p@30fps视频，解放双手。",
+    "big": "800万",
+    "stats": [
+      { "v": "800万", "l": "像素索尼镜头" },
+      { "v": "1080p", "l": "30fps视频" },
+      { "v": "AI", "l": "图像识别" }
+    ],
+    "note": "摄像头模组分解示意图。",
+    "alt": "AIMB-G2 Pro 摄像头镜片从镜框中升起的分解示意图"
   },
   "why": {
     "kicker": "为什么选择我们",
@@ -574,6 +600,19 @@ window.YS_I18N = {
     "real": {"title": "Producto real, empaque real", "lead": "Fotos sin retoques de las AIMB-G2 Pro tal como se envían: caja para tienda, lentes intercambiables, funda y cable de carga.", "alt": ["Gafas con IA AIMB-G2 Pro delante de sus cajas para tienda", "Contenido de la caja de las AIMB-G2 Pro: gafas, lentes de repuesto, funda y cable de carga", "Tres gafas AIMB-G2 Pro con distintos tonos de lente delante de sus cajas"]},
     "cta": "Solicitar precio por volumen de la G2 Pro"
   },
+  "optics": {
+    "kicker": "Dentro de la cámara",
+    "title": "Una lente Sony de 8 MP integrada en la montura",
+    "lead": "Las AIMB-G2 Pro captan fotos y vídeo 1080p@30fps a la altura de los ojos, con las manos libres.",
+    "big": "8MP",
+    "stats": [
+      { "v": "8 MP", "l": "Lente Sony" },
+      { "v": "1080p", "l": "Vídeo a 30fps" },
+      { "v": "IA", "l": "Reconocimiento de imágenes" }
+    ],
+    "note": "Vista explosionada ilustrativa del módulo de cámara.",
+    "alt": "Vista explosionada ilustrativa de la lente de la cámara de las AIMB-G2 Pro saliendo de la montura"
+  },
   "why": {
     "kicker": "Por qué trabajar con nosotros",
     "title": "Pensados para abastecer a importadores, minoristas y distribuidores",
@@ -825,6 +864,19 @@ window.YS_I18N = {
     "lens": { "title": "फ़ोटोक्रोमिक लेंस का असर", "indoor": "अंदर", "outdoor": "बाहर", "caption": "वही फ़्रेम — अंदर पारदर्शी, धूप में रंगीन।" },
     "real": {"title": "असली उत्पाद, असली पैकेजिंग", "lead": "AIMB-G2 Pro की बिना एडिट की गई तस्वीरें, जैसे वे शिप होते हैं: रिटेल बॉक्स, बदले जा सकने वाले लेंस, पाउच और चार्जिंग केबल।", "alt": ["अपने रिटेल बॉक्स के सामने रखे AIMB-G2 Pro AI ग्लासेस", "AIMB-G2 Pro बॉक्स की सामग्री: ग्लासेस, अतिरिक्त लेंस, पाउच और चार्जिंग केबल", "रिटेल बॉक्स के सामने अलग-अलग लेंस रंगों वाले तीन AIMB-G2 Pro ग्लासेस"]},
     "cta": "G2 Pro के थोक मूल्य का अनुरोध करें"
+  },
+  "optics": {
+    "kicker": "कैमरे के अंदर",
+    "title": "फ़्रेम में बना 8MP Sony लेंस",
+    "lead": "AIMB-G2 Pro आँखों के स्तर से, हाथों के बिना, फ़ोटो और 1080p@30fps वीडियो लेता है।",
+    "big": "8MP",
+    "stats": [
+      { "v": "8MP", "l": "Sony लेंस" },
+      { "v": "1080p", "l": "30fps वीडियो" },
+      { "v": "AI", "l": "इमेज रिकग्निशन" }
+    ],
+    "note": "कैमरा मॉड्यूल का सांकेतिक एक्सप्लोडेड व्यू।",
+    "alt": "फ़्रेम से बाहर उठते AIMB-G2 Pro कैमरा लेंस का सांकेतिक एक्सप्लोडेड व्यू"
   },
   "why": {
     "kicker": "हमारे साथ साझेदारी क्यों",

@@ -475,3 +475,119 @@ table.cmp { width: 100%; min-width: 1040px; border-collapse: collapse; font-size
   .lens-sweep { display: none; }
   .scroll-hint svg { animation: none; }
 }
+
+/* ---------- Optics (Act 3): scroll-driven exploded camera lens ---------- */
+.optics { position: relative; height: 320vh; background: var(--bg); }
+.optics-sticky { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
+.optics-sticky::before { /* deep-space backdrop */
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(60% 55% at 68% 46%, rgba(58, 166, 255, .13), transparent 70%),
+    radial-gradient(40% 40% at 20% 85%, rgba(245, 185, 66, .05), transparent 70%);
+}
+.optics-big {
+  position: absolute; right: -2vw; bottom: -6vh; margin: 0; pointer-events: none; user-select: none; white-space: nowrap;
+  font: 700 clamp(9rem, 30vw, 28rem)/.8 var(--f-display); letter-spacing: -.04em;
+  background: linear-gradient(180deg, rgba(123, 216, 255, .16), rgba(58, 166, 255, 0) 85%);
+  -webkit-background-clip: text; background-clip: text; color: transparent; will-change: transform, opacity;
+}
+.optics-inner {
+  position: relative; height: 100%; max-width: 1280px; margin: 0 auto; padding: calc(var(--nav-h) + 2vh) 24px 4vh;
+  display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr); align-items: center; gap: 2vw;
+}
+.optics-copy { position: relative; z-index: 3; }
+.optics-copy > * { will-change: opacity, transform; }
+.optics-copy h2 { font-size: clamp(2rem, 4.2vw, 3.6rem); line-height: 1.06; margin: 0 0 18px; }
+:lang(zh) .optics-copy h2, :lang(hi) .optics-copy h2 { line-height: 1.3; }
+.optics-copy .lead { margin: 0 0 30px; max-width: 30em; }
+.optics-stats { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.optics-stats li {
+  display: flex; align-items: baseline; gap: 16px; padding: 14px 0 0; border-top: 1px solid var(--line);
+  will-change: opacity, transform;
+}
+.optics-stats strong {
+  flex: 0 0 auto; min-width: 3.4em; font: 600 clamp(1.7rem, 3vw, 2.6rem)/1 var(--f-display); letter-spacing: var(--track);
+  background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.optics-stats span { color: #c5d2df; font-size: 1rem; }
+.optics-note { margin: 26px 0 0; font-size: .78rem; color: var(--muted); letter-spacing: .02em; }
+
+.optics-visual { position: relative; height: min(78vh, 760px); perspective: 1200px; perspective-origin: 50% 40%; }
+.optics-glow {
+  position: absolute; left: 0; top: 0; width: 10px; height: 10px; border-radius: 50%; pointer-events: none; will-change: transform, opacity;
+  background: radial-gradient(closest-side, rgba(170, 215, 255, .34), rgba(58, 166, 255, .12) 45%, transparent 72%);
+}
+.optics-glasses { position: absolute; left: 0; top: 0; max-width: none; will-change: transform; filter: drop-shadow(0 30px 60px rgba(0, 0, 0, .6)); }
+
+/* The rig sits on the camera; its local Z axis is the optical axis */
+.lx-rig { position: absolute; left: 0; top: 0; width: 0; height: 0; transform-style: preserve-3d; will-change: transform; --u: 100px; }
+.lx-el {
+  position: absolute; width: calc(var(--u) * var(--d)); height: calc(var(--u) * var(--d));
+  left: calc(var(--u) * var(--d) / -2); top: calc(var(--u) * var(--d) / -2);
+  transform-style: preserve-3d; will-change: transform;
+}
+.lx-el > i { position: absolute; inset: 0; display: block; border-radius: 50%; box-sizing: border-box; }
+/* side walls: stacked discs shaded like a lit cylinder */
+.lx-metal > .lx-rim { background: linear-gradient(90deg, #23272e 0%, #8d97a3 22%, #e9eef4 38%, #6a7480 56%, #2a2f37 80%, #14171c 100%); }
+.lx-black > .lx-rim { background: linear-gradient(90deg, #050608 0%, #1d222a 24%, #5a6572 38%, #171b21 55%, #07090c 100%); }
+.lx-glass > .lx-rim { border: 2px solid rgba(190, 228, 255, .34); border-left-color: rgba(255, 255, 255, .7); border-bottom-color: rgba(120, 190, 255, .16); }
+/* faces */
+.lx-sensor > .lx-face {
+  background:
+    radial-gradient(circle, transparent 0 58%, #0a0c10 59% 66%, #caa24a 67% 71%, #2a2f37 72% 100%),
+    conic-gradient(from 210deg, #1f6f5a, #5a3fb0, #1a2a6a, #36b08a, #1f6f5a);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .25);
+}
+.lx-ring > .lx-face {
+  background: conic-gradient(from 20deg, #c9d1da, #4b535d, #eef2f6, #59616b, #aab3bd, #3a4049, #dfe5eb, #c9d1da);
+  -webkit-mask: radial-gradient(circle, transparent 0 54%, #000 55%); mask: radial-gradient(circle, transparent 0 54%, #000 55%);
+}
+.lx-glass > .lx-face {
+  background:
+    radial-gradient(38% 26% at 34% 26%, rgba(255, 255, 255, .7), rgba(255, 255, 255, 0) 70%),
+    radial-gradient(30% 18% at 68% 78%, rgba(140, 205, 255, .35), rgba(140, 205, 255, 0) 70%),
+    radial-gradient(circle, rgba(160, 215, 255, .03) 0 46%, rgba(150, 205, 255, .16) 78%, rgba(215, 238, 255, .5) 97%, rgba(255, 255, 255, .85) 100%);
+  border: 1px solid rgba(255, 255, 255, .55);
+  box-shadow: inset 0 0 calc(var(--u) * .08) rgba(123, 216, 255, .35);
+}
+.lx-barrel > .lx-face {
+  background:
+    radial-gradient(26% 16% at 36% 30%, rgba(255, 255, 255, .55), rgba(255, 255, 255, 0) 70%),
+    radial-gradient(circle, rgba(40, 60, 90, .55) 0 30%, rgba(120, 190, 255, .28) 48%, rgba(230, 242, 255, .7) 52%, #0b0d11 54% 70%, #353c46 72%, #dfe6ee 75%, #0d0f13 78% 92%, #7a8490 96%, #14171c 100%);
+}
+.lx-front > .lx-face {
+  background:
+    radial-gradient(34% 20% at 32% 24%, rgba(255, 255, 255, .5), rgba(255, 255, 255, 0) 70%),
+    radial-gradient(circle at 54% 56%, #f6e8ff 0 1.6%, #7a3fd0 3%, #241046 7%, #06070a 11%, #171b2c 15%, #05060a 19%, #2b3550 21.5%, #06070a 24%, #0b0d12 34%, #1c2230 35.5%, #07080b 37.5%, #0a0c10 100%),
+    #07080b;
+  background-blend-mode: screen, normal, normal;
+  box-shadow: inset 0 0 0 calc(var(--u) * .012) #2c323b, inset 0 0 0 calc(var(--u) * .03) #0a0c10, inset 0 0 calc(var(--u) * .2) rgba(123, 216, 255, .22);
+}
+.lx-front > .lx-face::after { /* lens coating sheen, slides as the rig turns */
+  content: ""; position: absolute; inset: 0; border-radius: 50%;
+  background: conic-gradient(from calc(var(--sheen, 0) * 1deg), rgba(123, 216, 255, 0) 0 8%, rgba(123, 216, 255, .3) 14%, rgba(160, 110, 255, .2) 20%, rgba(123, 216, 255, 0) 28% 58%, rgba(245, 185, 66, .14) 66%, rgba(123, 216, 255, 0) 74% 100%);
+  -webkit-mask: radial-gradient(circle, transparent 0 36%, #000 40% 96%, transparent 100%); mask: radial-gradient(circle, transparent 0 36%, #000 40% 96%, transparent 100%);
+}
+.lx-beam { /* light travelling down the optical axis */
+  position: absolute; left: -1px; top: 0; width: 2px; height: calc(var(--u) * 4.6); transform-origin: 50% 0; transform: rotateX(90deg);
+  background: linear-gradient(180deg, rgba(123, 216, 255, 0), rgba(123, 216, 255, .7) 30%, rgba(255, 255, 255, .9) 60%, rgba(123, 216, 255, 0));
+  will-change: opacity;
+}
+
+@media (max-width: 860px) {
+  .optics-inner { grid-template-columns: 1fr; grid-template-rows: minmax(0, 1fr) auto; gap: 0; padding-bottom: 3vh; }
+  .optics-visual { order: -1; height: 100%; min-height: 0; }
+  .optics-copy h2 { font-size: clamp(1.5rem, 6.4vw, 2.2rem); margin-bottom: 8px; }
+  .optics-copy .kicker { margin-bottom: 6px; }
+  .optics-copy .lead { margin-bottom: 12px; font-size: .92rem; }
+  .optics-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+  .optics-stats li { flex-direction: column; gap: 4px; padding-top: 10px; }
+  .optics-stats strong { min-width: 0; font-size: 1.35rem; }
+  .optics-stats span { font-size: .76rem; line-height: 1.3; }
+  .optics-note { margin-top: 10px; font-size: .68rem; }
+  .optics-big { bottom: auto; top: 12vh; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .optics { height: auto; }
+  .optics-sticky { position: relative; }
+}

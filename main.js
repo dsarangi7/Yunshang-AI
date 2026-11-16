@@ -3,6 +3,7 @@
    1. i18n engine          4. Product modal + deep links
    2. Eye portal (canvas)  5. Quote form
    3. Glasses reveal       6. Nav, reveals, per-section meta
+   3b. Exploded camera lens
    ========================================================= */
 (function () {
   'use strict';
@@ -752,6 +753,159 @@
   // Paint language, navigation and in-view sections before the iris texture
   // blocks the main thread. That work is heavy on a phone.
   setTimeout(startPortal, 0);
+
+  /* =========================================================
+     3b. Optics: scroll-driven exploded camera lens (CSS 3D)
+     ========================================================= */
+  (function () {
+    var optics = $('#optics');
+    if (!optics) return;
+    var visual = $('#optics-visual'), rig = $('#lx-rig'), glasses = $('#optics-glasses');
+    var glow = $('#optics-glow'), big = $('#optics-big');
+    var copyEls = $$('#optics-copy > *:not(.optics-stats)');
+    var statEls = $$('#optics-copy .optics-stats li');
+    var CAM_X = 957 / 1400, CAM_Y = 400 / 1072, CAM_R = 28 / 1400;   // camera position in g2pro-hero.png
+    glasses.style.transformOrigin = (CAM_X * 100).toFixed(3) + '% ' + (CAM_Y * 100).toFixed(3) + '%';
+
+    // d = diameter, z = distance along the optical axis when exploded, t = thickness (all in units of --u)
+    var SPEC = [
+      { c: 'lx-metal lx-sensor', d: 0.50, z: 0.14, t: 0.06, n: 4 },
+      { c: 'lx-metal lx-ring',   d: 0.60, z: 0.66, t: 0.10, n: 6 },
+      { c: 'lx-glass',           d: 0.66, z: 1.18, t: 0.05, n: 4 },
+      { c: 'lx-glass',           d: 0.84, z: 1.72, t: 0.06, n: 4 },
+      { c: 'lx-glass',           d: 1.00, z: 2.32, t: 0.07, n: 5 },
+      { c: 'lx-black lx-barrel', d: 1.24, z: 3.06, t: 0.34, n: 16 },
+      { c: 'lx-black lx-front',  d: 1.62, z: 4.10, t: 0.16, n: 9 }
+    ];
+    var beam = document.createElement('div');
+    beam.className = 'lx-beam';
+    rig.appendChild(beam);
+    var els = SPEC.map(function (s) {
+      var el = document.createElement('div');
+      el.className = 'lx-el ' + s.c;
+      el.style.setProperty('--d', s.d);
+      for (var k = s.n; k >= 1; k--) {
+        var rim = document.createElement('i');
+        rim.className = 'lx-rim';
+        rim.style.transform = 'translateZ(calc(var(--u) * ' + (-s.t * k / s.n).toFixed(4) + '))';
+        el.appendChild(rim);
+      }
+      var face = document.createElement('i');
+      face.className = 'lx-face';
+      el.appendChild(face);
+      rig.appendChild(el);
+      return el;
+    });
+    var frontEl = els[els.length - 1];
+
+    var L = null;            // layout
+    function layout() {
+      var bw = visual.clientWidth, bh = visual.clientHeight;
+      if (!bw || !bh) return;
+      var narrow = window.innerWidth <= 860;
+      var w0 = Math.min(bw * 0.98, bh * 0.8 * 1400 / 1072), h0 = w0 * 1072 / 1400;
+      var x0 = (bw - w0) / 2, y0 = (bh - h0) / 2;
+      var u = Math.min(bh * 0.17, bw * (narrow ? 0.24 : 0.21));
+      var S = clamp(0.27 * u / (CAM_R * w0), 1.3, 3);
+      var cx = x0 + w0 * CAM_X, cy = y0 + h0 * CAM_Y;
+      L = { bw: bw, bh: bh, u: u, S: S, x0: x0, y0: y0, cx: cx, cy: cy,
+            dx: bw * (narrow ? 0.3 : 0.33) - cx, dy: bh * (narrow ? 0.84 : 0.82) - cy, hole: CAM_R * w0 * 2 };
+      glasses.style.width = w0.toFixed(1) + 'px';
+      glasses.style.height = h0.toFixed(1) + 'px';
+      rig.style.setProperty('--u', u.toFixed(2) + 'px');
+      var g = u * 7;
+      glow.style.width = glow.style.height = g.toFixed(0) + 'px';
+      glow.style.left = glow.style.top = (-g / 2).toFixed(0) + 'px';
+    }
+
+    var oTarget = 0, oProg = 0, oRun = false, oVisible = false, oLast = 0, oPX = 0, oPY = 0, primed = false;
+    function oMeasure() {
+      var r = optics.getBoundingClientRect(), total = r.height - window.innerHeight;
+      oTarget = reduce ? 0.82 : total > 0 ? clamp(-r.top / total) : 1;
+      // start the move a little before the scene pins, so it is already alive as it scrolls in
+      if (!reduce && r.top > 0) oTarget = 0;
+    }
+
+    function oRender(now) {
+      if (!L) return;
+      var p = oProg, u = L.u;
+      var idle = reduce ? 0 : Math.sin(now / 1700), idle2 = reduce ? 0 : Math.cos(now / 2300);
+      var z = smooth(p, 0, 0.3);                                   // dolly in on the camera
+      var open = smooth(p, 0.2, 0.74);
+      var orbit = smooth(p, 0.15, 1);
+      var s = 1 + (L.S - 1) * z;
+      var camX = L.cx + L.dx * z - oPX * 10 * z, camY = L.cy + L.dy * z - oPY * 8 * z;
+      glasses.style.transform = 'translate3d(' + (L.x0 + L.dx * z - oPX * 10 * z).toFixed(1) + 'px,' + (L.y0 + L.dy * z - oPY * 8 * z).toFixed(1) + 'px,0) scale(' + s.toFixed(4) + ')';
+      glasses.style.opacity = (1 - 0.35 * open).toFixed(3);
+
+      var rx = 76 - 18 * orbit + oPY * 5 + idle2 * 0.8;
+      var rz = 6 + 20 * orbit + oPX * 7 + idle * 1.2;
+      rig.style.transform = 'translate3d(' + camX.toFixed(1) + 'px,' + camY.toFixed(1) + 'px,0) rotateZ(' + rz.toFixed(2) + 'deg) rotateX(' + rx.toFixed(2) + 'deg)';
+      frontEl.style.setProperty('--sheen', (rz * 6 + p * 200).toFixed(1));
+
+      for (var i = 0; i < els.length; i++) {
+        var sp = SPEC[i];
+        var e = smooth(p, 0.2 + (els.length - 1 - i) * 0.035, 0.5 + (els.length - 1 - i) * 0.035 + 0.02);   // front lens leaves first
+        var eo = reduce ? e : easeOutBack(e) * 0.5 + e * 0.5;
+        var k0 = L.hole * s / (sp.d * u) * 0.9;                    // starts the size of the camera opening
+        var sc = k0 + (1 - k0) * e;
+        var bob = reduce ? 0 : Math.sin(now / 1300 + i * 0.9) * 0.035 * e;
+        var zz = (sp.z * eo * (0.9 + 0.1 * orbit) + bob) * u;
+        els[i].style.transform = 'translateZ(' + zz.toFixed(1) + 'px) rotateZ(' + ((1 - e) * (120 + i * 30)).toFixed(1) + 'deg) scale(' + sc.toFixed(4) + ')';
+        var eop = smooth(e, 0, 0.12);                            // opacity < 1 flattens 3D, so drop it once solid
+        els[i].style.opacity = eop > 0.999 ? '' : eop.toFixed(3);
+      }
+      beam.style.opacity = (smooth(p, 0.45, 0.75) * 0.55).toFixed(3);
+
+      var ax = Math.sin(rz * Math.PI / 180), ay = -Math.cos(rz * Math.PI / 180), len = 2.1 * u * Math.sin(rx * Math.PI / 180) * open;
+      glow.style.transform = 'translate3d(' + (camX + ax * len).toFixed(1) + 'px,' + (camY + ay * len).toFixed(1) + 'px,0) scale(' + (0.35 + 0.65 * open).toFixed(3) + ')';
+      glow.style.opacity = (0.25 + 0.75 * open).toFixed(3);
+
+      big.style.opacity = smooth(p, 0.3, 0.6).toFixed(3);
+      big.style.transform = 'translate3d(' + (oPX * -14).toFixed(1) + 'px,' + ((1 - p) * 22).toFixed(2) + 'vh,0)';
+
+      var j, a;
+      for (j = 0; j < copyEls.length; j++) {
+        var last = j === copyEls.length - 1;                       // the note comes in last
+        a = reduce ? 1 : last ? smooth(p, 0.78, 0.9) : smooth(p, 0.03 + j * 0.04, 0.16 + j * 0.04);
+        copyEls[j].style.opacity = a.toFixed(3);
+        copyEls[j].style.transform = 'translate3d(0,' + ((1 - a) * 24).toFixed(1) + 'px,0)';
+      }
+      for (j = 0; j < statEls.length; j++) {
+        a = reduce ? 1 : smooth(p, 0.46 + j * 0.1, 0.56 + j * 0.1);
+        statEls[j].style.opacity = a.toFixed(3);
+        statEls[j].style.transform = 'translate3d(' + ((1 - a) * -28).toFixed(1) + 'px,0,0)';
+      }
+    }
+
+    function oFrame(now) {
+      var dt = oLast ? Math.min(64, now - oLast) / 16.667 : 1;
+      oLast = now;
+      var k = 1 - Math.pow(1 - 0.12, dt);
+      oProg += (oTarget - oProg) * k;
+      if (Math.abs(oTarget - oProg) < 0.0002) oProg = oTarget;
+      var tx = finePointer && !reduce ? ptrX : 0, ty = finePointer && !reduce ? ptrY : 0;
+      oPX += (tx - oPX) * k; oPY += (ty - oPY) * k;
+      oRender(now);
+      if (oVisible && !reduce) requestAnimationFrame(oFrame); else { oRun = false; oLast = 0; }
+    }
+    function oKick() { if (!oRun) { oRun = true; requestAnimationFrame(oFrame); } }
+    function oRefresh() { layout(); oMeasure(); if (!primed) { oProg = oTarget; primed = true; } oKick(); }
+
+    window.addEventListener('scroll', function () { oMeasure(); if (oVisible) oKick(); }, { passive: true });
+    window.addEventListener('resize', oRefresh);
+    if (finePointer) window.addEventListener('pointermove', function () { if (oVisible) oKick(); }, { passive: true });
+    var onR = function () { oMeasure(); oProg = oTarget; oKick(); };
+    if (mqReduce.addEventListener) mqReduce.addEventListener('change', onR); else if (mqReduce.addListener) mqReduce.addListener(onR);
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        oVisible = entries[0].isIntersecting;
+        if (oVisible) oRefresh();
+      }, { rootMargin: '20% 0px' }).observe(optics);
+    } else { oVisible = true; }
+    if (glasses.complete) oRefresh(); else glasses.addEventListener('load', oRefresh);
+    oRefresh();
+  })();
 
   /* =========================================================
      4. Product modal + deep links (#product-xxx)
