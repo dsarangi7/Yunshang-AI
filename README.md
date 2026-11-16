@@ -56,7 +56,7 @@ Every push and pull request runs `.github/workflows/ci.yml`, which checks the tr
 The public files still contain configuration placeholders. Fill these in before calling the site finished or sending traffic to production:
 
 - [ ] Rebuild with the real production domain so canonical tags, Open Graph, JSON-LD, `robots.txt`, and the sitemap no longer say `https://YOUR-DOMAIN.com`.
-- [ ] Replace `${CONTACT_EMAIL}` and `${WHATSAPP_NUMBER}` in `main.js`, the template footer, and the build script, then rebuild.
+- [ ] Replace `${WHATSAPP_NUMBER}` in `main.js`, the template footer, and the build script, then rebuild. The contact email is already `Szyskj22@163.com`.
 - [ ] Give the quote form a real submission path (it currently only composes a `mailto:` / WhatsApp link).
 - [ ] Add a privacy policy, terms, and the legal company name and address.
 - [ ] Have the client sign off on strong claims (for example “best rate in the world,” “ChatGPT-class,” “139 languages,” “32MP photos” vs interpolated, and the CACY01 weight of 172g).
